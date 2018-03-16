@@ -6,6 +6,11 @@ import { MomentModule } from 'angular2-moment';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {MatListModule} from '@angular/material/list';
+
 
 
 
@@ -20,6 +25,11 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     MomentModule,
     FormsModule,
     HttpClientModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
+    MatListModule,
     NgbModule.forRoot(),
 
   ],
