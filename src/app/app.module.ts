@@ -5,20 +5,25 @@ import {HttpClientModule} from '@angular/common/http';
 import { MomentModule } from 'angular2-moment';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-  ],
 
+  ],
   imports: [
     BrowserModule,
     MomentModule,
     FormsModule,
     HttpClientModule,
+    NgbModule.forRoot(),
 
   ],
+
 
   bootstrap: [AppComponent]
 })
