@@ -41,8 +41,18 @@
     }
     .users-list{
       padding-top:40px;
+    }
+    .footer{
+      background:lightgray ;
+      position:  fixed;
+      bottom: 0;
+      width:80%;
+      min-height: 70px;
+      margin-left:-15px;
 
-
+    }
+    .chat-txt{
+      margin-top:15px;
     }
 
 
@@ -59,7 +69,12 @@
       position: relative;
       width: 100%;
       min-height: 60px;
-
+    }
+    .message-input{
+      margin-left:20px;
+    }
+    .green-background{
+      color:white; background-color:		#228B22
     }
 
     /* Set gray background color and 100% height */
@@ -157,6 +172,25 @@
      <div class="col-9 chatContent">
 
        Chat
+       <footer  class=" footer" >
+          <div class="chat-txt row">
+
+              <div class="col-1">
+                  <span class="glyphicon glyphicon-cog"></span>
+             </div>
+             <div class="col-8">
+                <input type="text" class="form-control" [(ngModel)]="newMessage">
+              </div>
+              <div class="col-2">
+                <button class="btn green-background"  (click)="sendMessage()">Send</button>
+              </div>
+          </div>
+          <div class="btn-group">
+
+              <!-- <button type="button" class="btn btn-white"><i class=" fa fa-paperclip"></i></button> -->
+          </div>
+          <!-- <button class="btn btn-danger" (click)="sendMessage()">Send</button> -->
+      </footer>
       </div>
 
   </div>
