@@ -14,6 +14,7 @@ import { ChatComponent } from './chat/chat.component';
 import { ChatService } from './Services/chat.service';
 import { UserService } from './Services/user.service';
 import { LoginComponent } from './login/login.component';
+import { ChatContentComponent } from './chat-content/chat-content.component';
 
 const appRoutes: Routes = [
   { path: 'chat', component: ChatComponent },
@@ -25,7 +26,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     ChatComponent,
-    LoginComponent
+    LoginComponent,
+    ChatContentComponent
 
   ],
   imports: [

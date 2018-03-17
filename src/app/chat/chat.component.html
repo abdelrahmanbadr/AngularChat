@@ -99,6 +99,7 @@
     </div>
 
      <div class="col-9 chatContent">
+        <app-chat-content></app-chat-content>
 
         <div class="group-rom"  *ngFor="let message of messages">
             <div class="first-part odd" *ngIf="message.senderId == currentUserData.userId">{{currentUserData.userName}}</div>
@@ -106,14 +107,14 @@
             <div class="second-part">{{message.text}}</div>
             <div class="third-part">{{message.created_at | amLocale:'en' | amDateFormat:'h:mm a'}}</div>
         </div>
-       <footer  class=" footer" *ngIf="otherUserData">
+       <footer  class=" footer" *ngIf="!otherUserData">
           <div class="chat-txt row">
 
               <div class="col-1">
                   <span class="glyphicon glyphicon-cog"></span>
              </div>
              <div class="col-8">
-                <input type="text" class="form-control" [(ngModel)]="newMessage">
+                <input type="text" class="form-control" [(ngModel)]="newMessage" placeholder ="Type your message">
               </div>
               <div class="col-2">
                 <button class="btn green-background"  (click)="sendMessage()">Send</button>
