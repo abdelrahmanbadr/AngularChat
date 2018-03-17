@@ -13,8 +13,11 @@ import {MatListModule} from '@angular/material/list';
 import { ChatComponent } from './chat/chat.component';
 import { ChatService } from './Services/chat.service';
 import { UserService } from './Services/user.service';
+import { LoginComponent } from './login/login.component';
 
-
+const appRoutes: Routes = [
+  { path: 'chat', component: ChatComponent },
+];
 
 
 
@@ -22,6 +25,7 @@ import { UserService } from './Services/user.service';
   declarations: [
     AppComponent,
     ChatComponent,
+    LoginComponent
 
   ],
   imports: [
