@@ -220,7 +220,7 @@ ul{
 
 }
 .green-background{
-  color:white; background-color:		#228B22
+  color:white; background-color:		rgb(6, 141, 107);
 }
 .message-input{
   margin-left:20px;

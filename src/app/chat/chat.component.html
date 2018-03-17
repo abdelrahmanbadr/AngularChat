@@ -36,7 +36,7 @@
     </div>
     <div class="col-9 chat-header">
       <div class="row">
-      <div class="col-11">
+      <div class="col-11" *ngIf="otherUserData">
         <!-- <img width="40" height="40" class="img-circle" src="../assets/images/user.png"> -->
         <img width="40" height="40" class="img-circle" src="https://dfu1k3y1rami2.cloudfront.net/wp-content/uploads/2014/07/27151402/2016_03_21_LB.jpg">
          Chat With {{otherUserData?.userName}}

@@ -52,10 +52,11 @@
   <footer  class=" footer" *ngIf="otherUserData">
       <div class="chat-txt row">
 
-          <div class="col-1">
-              <span class="glyphicon glyphicon-cog"></span>
+
+          <div class="col-1 ">
+            <i class="material-icons float-right">attach_file</i>
          </div>
-         <div class="col-8">
+         <div class="col-9">
             <input type="text" class="form-control" [(ngModel)]="newMessage" placeholder ="Type your message" (keydown)="keyDownFunction($event)">
           </div>
           <div class="col-2">

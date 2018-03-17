@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, EventEmitter ,ViewContainerRef } from '@angular/core';
 import { ChatService } from '../Services/chat.service';
 import { UserService } from '../Services/user.service';
-import { ToastsManager,ToastModule } from 'ng2-toastr/ng2-toastr';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -26,16 +25,16 @@ export class ChatContentComponent implements OnInit {
       {
         this.messages.push(message);
       }
-      else
+      else if( message['senderId'] != this.otherUserData.userId && message['senderId'] != this.currentUserData.userId)
       {
-        //send notification
+        this.toastr.success(message['text'], message['userName']);
+
       }
     });
 
   }
 
   ngOnInit() {
-    this.toastr.success('Hello world!', 'Toastr fun!');
 
     this.getChatMessages();
   }
@@ -48,8 +47,8 @@ export class ChatContentComponent implements OnInit {
     }
   }
   sendMessage() {
-    if(this.newMessage == ""){
-      alert("Please write a message");
+    if(!this.newMessage){
+      this.toastr.error('Please write a message');
       return;
     }
     this.chatService.sendMessageToSocket(this.newMessage,this.otherUserData.userId);
