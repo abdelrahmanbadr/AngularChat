@@ -49,7 +49,7 @@ export class UserService {
        observer.next(data.users);
       });
       return () => {
-       // this.socket.disconnect();
+        this.socket.disconnect();
       };
     });
     return observable;

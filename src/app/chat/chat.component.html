@@ -79,6 +79,10 @@
               <!-- <img width="40" height="40" class="img-circle" src="../assets/images/user.png"> -->
             <div (click)="getUserData(user)">
               {{user.userName}}
+
+                {{unSeenMessage[user.userId]}}
+
+
             </div>
             </mat-list-item>
 

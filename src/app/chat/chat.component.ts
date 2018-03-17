@@ -13,27 +13,12 @@ export class ChatComponent implements OnInit {
   onExit() {
     this.chatService.exitSession();
   }
-
-  chats: any;
-  joinned: boolean = false;
   messages ;
   usersList ;
   newMessage = "";
   currentUserData;
   otherUserData;
-  ////////////////////////
-  //messages = [];
-
-  connectionMessage;
-  connectionUsers;
-  backconnect;
-  message;
-  username;
-  userInput;
-  users;
-
-
-
+  unSeenMessage=[]
 
   date =  new Date();
 
@@ -43,10 +28,20 @@ export class ChatComponent implements OnInit {
     this.currentUserData = JSON.parse(localStorage.getItem('userData'));
 
 
-    this.connectionUsers = this.userService.getUsersExceptCurrent().subscribe(data => {
+    this.userService.getUsersExceptCurrent().subscribe(data => {
       this.usersList = data;
       if(!this.otherUserData){
         this.otherUserData = data[0];
+      }
+    });
+    this.chatService.getMessages().subscribe(message => {
+      if(message['receiverId'] == this.currentUserData.userId && message['senderId'] != this.otherUserData.userId && message['senderId'] != this.currentUserData.userId)
+      {
+        if(!this.unSeenMessage[message['senderId']]){
+          this.unSeenMessage[message['senderId']]=0;
+        }
+       this.unSeenMessage[message['senderId']]+=1;
+       console.log(this.unSeenMessage);
       }
     });
 
@@ -56,7 +51,8 @@ export class ChatComponent implements OnInit {
   }
   getUserData(user){
     this.otherUserData = user;
-    console.log(this.otherUserData);
+    this.unSeenMessage[user.userId]=0;
+
   }
 
 //To send message to soket io and DB

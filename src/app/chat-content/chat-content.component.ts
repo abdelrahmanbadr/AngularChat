@@ -25,10 +25,9 @@ export class ChatContentComponent implements OnInit {
       {
         this.messages.push(message);
       }
-      else if( message['senderId'] != this.otherUserData.userId && message['senderId'] != this.currentUserData.userId)
+      else if(message['receiverId'] == this.currentUserData.userId && message['senderId'] != this.otherUserData.userId && message['senderId'] != this.currentUserData.userId)
       {
         this.toastr.success(message['text'], message['userName']);
-
       }
     });
 
@@ -51,6 +50,8 @@ export class ChatContentComponent implements OnInit {
       this.toastr.error('Please write a message');
       return;
     }
+    let type = "";
+
     this.chatService.sendMessageToSocket(this.newMessage,this.otherUserData.userId);
     let message ={senderId:this.currentUserData.userId,receiverId:this.otherUserData.userId,text:this.newMessage};
     this.chatService.storeMessageToDB(message).then(response=>{
