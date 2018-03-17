@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keyword" content="chat, Angular, Node, socket io">
+
+
+    <title>chat room </title>
+
+
+  </head>
+
+
+  <body>
+
+
+
+        <!-- page start-->
+        <div class="chat-room">
+            <aside class="left-side" >
+                <div class="row user-head">
+
+                  <div class="circle" style="background: red; margin-left:20px;"></div>
+                  <div class="circle" style="background: orange;"></div>
+                  <div class="circle" style="background: green;"></div>
+
+
+                </div>
+
+                <ul class="chat-list chat-user" *ngFor="let user of usersList">
+
+                    <li (click)="getChatMessages(user)">
+                        <a href="#">
+                            <i class="fa fa-circle text-muted"></i>
+                            <span>{{user.userName}}</span>
+                            <i class="fa fa-times pull-right"></i>
+                        </a>
+                    </li>
+
+
+
+                </ul>
+            </aside>
+
+            <aside class="right-side" >
+                <div class="chat-room-head">
+                    <h3 *ngIf="otherUserData" style="color:black;">CHAT WITH {{otherUserData.userName}}</h3>
+
+                </div>
+
+
+                <div class="group-rom"  *ngFor="let message of messages">
+                    <div class="first-part odd" *ngIf="message.senderId == currentUserData.userId">{{currentUserData.userName}}</div>
+                    <div class="first-part odd" *ngIf="message.senderId == otherUserData.userId">{{otherUserData.userName}}</div>
+                    <div class="second-part">{{message.text}}</div>
+                    <div class="third-part">{{message.created_at | amLocale:'en' | amDateFormat:'h:mm a'}}</div>
+                </div>
+
+
+
+                <footer style="background:#EDEFF0 ; position:  fixed; bottom: 0; width:75%; " *ngIf="otherUserData">
+                    <div class="chat-txt">
+                        <input type="text" class="form-control" [(ngModel)]="newMessage">
+                    </div>
+                    <div class="btn-group">
+
+                        <!-- <button type="button" class="btn btn-white"><i class=" fa fa-paperclip"></i></button> -->
+                    </div>
+                    <button class="btn btn-danger" (click)="sendMessage()">Send</button>
+                </footer>
+            </aside>
+
+        </div>
+        <!-- page end-->
+
+
+      <!--main content end-->
+      <!--footer start-->
+
+      <!--footer end-->
+
+
+    <!-- js placed at the end of the document so the pages load faster -->
+
+
+
+  </body>
+</html>

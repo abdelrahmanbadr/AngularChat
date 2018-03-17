@@ -1,0 +1,80 @@
+.circle{
+  margin-left:10px;
+  width: 10px;
+  height: 10px;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+}
+.row.content {
+  min-height:  91vh;
+}
+.icon{
+  color:gray;
+  font-size: 25px;
+  padding-top:5px;
+}
+.icon-btn{
+  width:100%;
+  height: 100%;
+  position: absolute ;
+  margin-left:-13px;
+  border-bottom:0px;
+  border-width: .1px;
+
+  background-color:transparent;
+}
+.sidenav-header{
+  background-color:lightgray;
+  min-height: 40px;
+  position: absolute ;
+  width:100% ;
+  margin-left:-15px;
+}
+.users-list{
+  padding-top:40px;
+}
+.footer{
+  background:lightgray ;
+  position:  fixed;
+  bottom: 0;
+  width:80%;
+  min-height: 70px;
+  margin-left:-15px;
+
+}
+.chat-txt{
+  margin-top:15px;
+}
+
+
+
+.user-header{
+  background-color: #f1f1f1;
+  padding-top:20px;
+  min-height: 60px;
+}
+.chat-header{
+
+  background-color:white;
+  padding-top:10px;
+  position: relative;
+  width: 100%;
+  min-height: 60px;
+}
+.message-input{
+  margin-left:20px;
+}
+.green-background{
+  color:white; background-color:		#228B22
+}
+
+/* Set gray background color and 100% height */
+.sidenav {
+
+  height: 100%;
+}
+
+.chatContent{
+background-color: #f1f1f1;
+}

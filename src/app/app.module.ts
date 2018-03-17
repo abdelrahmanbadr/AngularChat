@@ -10,6 +10,9 @@ import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatListModule} from '@angular/material/list';
+import { ChatComponent } from './chat/chat.component';
+import { ChatService } from './Services/chat.service';
+import { UserService } from './Services/user.service';
 
 
 
@@ -18,6 +21,7 @@ import {MatListModule} from '@angular/material/list';
 @NgModule({
   declarations: [
     AppComponent,
+    ChatComponent,
 
   ],
   imports: [
@@ -35,6 +39,7 @@ import {MatListModule} from '@angular/material/list';
   ],
 
 
-  bootstrap: [AppComponent]
+  providers: [ChatService,UserService],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
