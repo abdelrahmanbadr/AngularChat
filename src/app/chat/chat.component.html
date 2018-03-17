@@ -71,14 +71,14 @@
 
       </div>
       <mat-list class="users-list">
-          <mat-list-item>
+          <mat-list-item  *ngFor="let user of usersList">
 
               <!-- <img width="40" height="40" class="img-circle" src="../assets/images/user.png"> -->
-
-             user 1
+            <div (click)="getChatMessages(user)">
+              {{user.userName}}
+            </div>
             </mat-list-item>
-          <mat-list-item> user 2 </mat-list-item>
-          <mat-list-item> user 3 </mat-list-item>
+
       </mat-list>
 
 
@@ -106,7 +106,7 @@
             <div class="second-part">{{message.text}}</div>
             <div class="third-part">{{message.created_at | amLocale:'en' | amDateFormat:'h:mm a'}}</div>
         </div>
-       <footer  class=" footer" >
+       <footer  class=" footer" *ngIf="otherUserData">
           <div class="chat-txt row">
 
               <div class="col-1">
