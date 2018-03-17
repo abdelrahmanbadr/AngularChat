@@ -34,18 +34,8 @@
 .users-list{
   padding-top:40px;
 }
-.footer{
-  background:lightgray ;
-  position:  fixed;
-  bottom: 0;
-  width:80%;
-  min-height: 70px;
-  margin-left:-15px;
 
-}
-.chat-txt{
-  margin-top:15px;
-}
+
 
 
 
@@ -62,12 +52,7 @@
   width: 100%;
   min-height: 60px;
 }
-.message-input{
-  margin-left:20px;
-}
-.green-background{
-  color:white; background-color:		#228B22
-}
+
 
 /* Set gray background color and 100% height */
 .sidenav {
@@ -78,6 +63,5 @@
 .chatContent{
 background-color: #f1f1f1;
 }
-ul{
-  list-style-type: none;
-}
+
+

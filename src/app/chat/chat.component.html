@@ -12,6 +12,8 @@
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 
+
+
   <style>
     /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
 
@@ -35,8 +37,9 @@
     <div class="col-9 chat-header">
       <div class="row">
       <div class="col-11">
-        <img width="40" height="40" class="img-circle" src="../assets/images/user.png">
-        You Chat With Satushi
+        <!-- <img width="40" height="40" class="img-circle" src="../assets/images/user.png"> -->
+        <img width="40" height="40" class="img-circle" src="https://dfu1k3y1rami2.cloudfront.net/wp-content/uploads/2014/07/27151402/2016_03_21_LB.jpg">
+         Chat With {{otherUserData?.userName}}
       </div>
       <div class="col-1">
 
@@ -74,7 +77,7 @@
           <mat-list-item  *ngFor="let user of usersList">
 
               <!-- <img width="40" height="40" class="img-circle" src="../assets/images/user.png"> -->
-            <div (click)="getChatMessages(user)">
+            <div (click)="getUserData(user)">
               {{user.userName}}
             </div>
             </mat-list-item>
@@ -99,33 +102,8 @@
     </div>
 
      <div class="col-9 chatContent">
-        <app-chat-content></app-chat-content>
+        <app-chat-content *ngIf="otherUserData" [otherUserData]="otherUserData"></app-chat-content>
 
-        <div class="group-rom"  *ngFor="let message of messages">
-            <div class="first-part odd" *ngIf="message.senderId == currentUserData.userId">{{currentUserData.userName}}</div>
-            <div class="first-part odd" *ngIf="message.senderId == otherUserData.userId">{{otherUserData.userName}}</div>
-            <div class="second-part">{{message.text}}</div>
-            <div class="third-part">{{message.created_at | amLocale:'en' | amDateFormat:'h:mm a'}}</div>
-        </div>
-       <footer  class=" footer" *ngIf="!otherUserData">
-          <div class="chat-txt row">
-
-              <div class="col-1">
-                  <span class="glyphicon glyphicon-cog"></span>
-             </div>
-             <div class="col-8">
-                <input type="text" class="form-control" [(ngModel)]="newMessage" placeholder ="Type your message">
-              </div>
-              <div class="col-2">
-                <button class="btn green-background"  (click)="sendMessage()">Send</button>
-              </div>
-          </div>
-          <div class="btn-group">
-
-              <!-- <button type="button" class="btn btn-white"><i class=" fa fa-paperclip"></i></button> -->
-          </div>
-          <!-- <button class="btn btn-danger" (click)="sendMessage()">Send</button> -->
-      </footer>
       </div>
 
   </div>
