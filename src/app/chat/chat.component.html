@@ -73,20 +73,29 @@
         </div>
 
       </div>
-      <mat-list class="users-list">
+      <!-- <mat-list>
           <mat-list-item  *ngFor="let user of usersList">
-
-              <!-- <img width="40" height="40" class="img-circle" src="../assets/images/user.png"> -->
             <div (click)="getUserData(user)">
               {{user.userName}}
-
                 {{unSeenMessage[user.userId]}}
-
-
             </div>
             </mat-list-item>
-
-      </mat-list>
+      </mat-list> -->
+      <div class=" clearfix  users-list">
+          <ul class="list">
+            <div *ngFor="let user of usersList" (click)="getUserData(user)">
+              <div class="small_text " style="float: right;"> 12:30 pm</div> <br>
+              <li class="clearfix row" >
+                <img class="img-circle col-3" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg" alt="avatar" />
+              <div class="col-7">
+                  {{user.userName}} <br>
+                  <div class="small_text">last message</div>
+              </div>
+              <div class="col-1 notifications badge bg-important" *ngIf="unSeenMessage[user.userId] > 0"> {{unSeenMessage[user.userId]}} </div>
+              </li>
+            </div>
+          </ul>
+     </div>
 
 
       <!-- <ul class="chat-list chat-user" *ngFor="let user of usersList">

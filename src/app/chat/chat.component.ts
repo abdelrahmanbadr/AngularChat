@@ -41,7 +41,7 @@ export class ChatComponent implements OnInit {
           this.unSeenMessage[message['senderId']]=0;
         }
        this.unSeenMessage[message['senderId']]+=1;
-       console.log(this.unSeenMessage);
+
       }
     });
 

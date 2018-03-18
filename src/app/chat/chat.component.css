@@ -33,6 +33,7 @@
 }
 .users-list{
   padding-top:40px;
+  margin-left:-30px;
 }
 
 
@@ -62,6 +63,18 @@
 
 .chatContent{
 background-color: #f1f1f1;
+}
+ul{
+  list-style-type: none;
+}
+.notifications{
+  color:white;
+  background-color: red;
+  height: 20px;
+}
+.small_text{
+  color: #a1a1a1;
+  font-size:12px;
 }
 
 
