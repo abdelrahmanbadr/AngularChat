@@ -50,12 +50,21 @@ export class ChatContentComponent implements OnInit {
       this.toastr.error('Please write a message');
       return;
     }
-    let type = "";
+    let message ={senderId:this.currentUserData.userId,receiverId:this.otherUserData.userId,text:this.newMessage};
+    if(this.otherUserData.userId == "-1" ){
+      this.messages.push(message);
+
+     let otherMessage = {senderId:-1,text:this.newMessage};;
+
+      this.messages.push(otherMessage);
+      this.newMessage ="";
+      return;
+    }
 
     this.chatService.sendMessageToSocket(this.newMessage,this.otherUserData.userId);
-    let message ={senderId:this.currentUserData.userId,receiverId:this.otherUserData.userId,text:this.newMessage};
     this.chatService.storeMessageToDB(message).then(response=>{
       this.messages.push(message);
+
       this.newMessage = '';
 
     }, (err) => {
@@ -66,14 +75,23 @@ export class ChatContentComponent implements OnInit {
 
   getChatMessages() {
 
+
     this.chatService.getChatMessages(this.otherUserData.userId).then(response=>{
       console.log(response);
       this.messages = response;
+      this.chatBot();
 
     }, (err) => {
       console.log(err);
     });
 
+  }
+  chatBot() {
+    if(this.otherUserData.userId == "-1" && this.messages){
+      let x ={senderId:-1,receiverId:this.currentUserData.userId,text:"I will echo whatever you write"};
+      this.messages.push(x);
+
+    }
   }
 
 }

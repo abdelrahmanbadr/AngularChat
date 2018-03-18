@@ -26,10 +26,12 @@ export class ChatComponent implements OnInit {
   constructor(private chatService: ChatService,private userService: UserService) {
 
     this.currentUserData = JSON.parse(localStorage.getItem('userData'));
+    this.usersList=[{userName:"Silly Bot",userId:-1,avatar:"https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_02.jpg"}];
 
 
     this.userService.getUsersExceptCurrent().subscribe(data => {
       this.usersList = data;
+      this.usersList.push({userName:"Silly Bot",userId:-1,avatar:"https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_02.jpg"});
       if(!this.otherUserData){
         this.otherUserData = data[0];
       }
