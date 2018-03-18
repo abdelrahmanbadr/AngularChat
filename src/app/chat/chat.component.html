@@ -84,13 +84,13 @@
       <div class=" clearfix  users-list">
           <ul class="list">
             <div *ngFor="let user of usersList" (click)="getUserData(user)">
-              <div class="small_text " style="float: right;"> 12:30 pm</div> <br>
+              <div class="small_text " style="float: right;" *ngIf="lastMessages[user.userId]"> {{lastMessages[user.userId]['created_at'] | amLocale:'en' | amDateFormat:'h:mm a'}}</div> <br>
               <li class="clearfix row" >
                 <!-- <img class="img-circle col-3" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg" alt="avatar" /> -->
                 <img class="img-circle col-3" width="70" height="50" src="{{user.avatar}}" alt="avatar" />
               <div class="col-7">
                   {{user.userName}} <br>
-                  <div class="small_text">last message</div>
+                  <div class="small_text" *ngIf="lastMessages[user.userId]">{{lastMessages[user.userId]['text']}}</div>
               </div>
               <div class="col-1 notifications badge bg-important" *ngIf="unSeenMessage[user.userId] > 0"> {{unSeenMessage[user.userId]}} </div>
               </li>

@@ -21,7 +21,28 @@ export class ChatService {
   getChatMessages(userId2) {
     return new Promise((resolve, reject) => {
 
-      this.http.get(this.apiUrl+'messages/' + this.currentUserData.userId+'/'+userId2)
+      this.http.get(this.apiUrl+'messages/all/' + this.currentUserData.userId+'/'+userId2)
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+  getLastMessage(userId2) {
+    return new Promise((resolve, reject) => {
+
+      this.http.get(this.apiUrl+'messages/last/' + this.currentUserData.userId+'/'+userId2)
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+  getLastMessages() {
+    return new Promise((resolve, reject) => {
+      this.http.get(this.apiUrl+'messages/last/' + this.currentUserData.userId)
         .subscribe(res => {
           resolve(res);
         }, (err) => {

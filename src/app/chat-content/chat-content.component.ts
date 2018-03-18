@@ -77,7 +77,6 @@ export class ChatContentComponent implements OnInit {
 
   getChatMessages() {
 
-
     this.chatService.getChatMessages(this.otherUserData.userId).then(response=>{
       console.log(response);
       this.messages = response;

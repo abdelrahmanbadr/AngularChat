@@ -18,7 +18,8 @@ export class ChatComponent implements OnInit {
   newMessage = "";
   currentUserData;
   otherUserData;
-  unSeenMessage=[]
+  unSeenMessage;
+  lastMessages;
 
   date =  new Date();
 
@@ -26,16 +27,23 @@ export class ChatComponent implements OnInit {
   constructor(private chatService: ChatService,private userService: UserService) {
 
     this.currentUserData = JSON.parse(localStorage.getItem('userData'));
-    this.usersList=[{userName:"Silly Bot",userId:-1,avatar:"https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_02.jpg"}];
+    this.usersList = [];
+    this.lastMessages=[];
+    this.unSeenMessage=[];
+    this.addBotToUserList();
+
+
 
 
     this.userService.getUsersExceptCurrent().subscribe(data => {
       this.usersList = data;
-      this.usersList.push({userName:"Silly Bot",userId:-1,avatar:"https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_02.jpg"});
+      this.addBotToUserList();
       if(!this.otherUserData){
         this.otherUserData = data[0];
       }
     });
+
+
     this.chatService.getMessages().subscribe(message => {
       if(message['receiverId'] == this.currentUserData.userId && message['senderId'] != this.otherUserData.userId && message['senderId'] != this.currentUserData.userId)
       {
@@ -50,6 +58,29 @@ export class ChatComponent implements OnInit {
   }
   ngOnInit() {
     this.userService.sendUserToSocket();
+    //this.chatService.getLastMessages();
+    this.chatService.getLastMessages().then(response=>{
+
+      //this.lastMessages = response;
+      for(var i=0; i<(<any>response).length; i++){
+        this.lastMessages[response[i].senderId]=response[i];
+      }
+    //   let arr = [];
+    //  let arr = response;
+    //   arr.forEach(element => {
+    //     this.lastMessages[element.senderId]=element;
+    //   });
+      console.log(this.lastMessages);
+
+
+
+    }, (err) => {
+      console.log(err);
+    });
+
+  }
+  addBotToUserList(){
+    this.usersList.push({userName:"Silly Bot",userId:-1,avatar:"https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_02.jpg"});
   }
   getUserData(user){
     this.otherUserData = user;
