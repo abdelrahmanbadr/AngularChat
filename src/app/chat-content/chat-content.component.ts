@@ -3,6 +3,7 @@ import { ChatService } from '../Services/chat.service';
 import { UserService } from '../Services/user.service';
 import { ToastrService } from 'ngx-toastr';
 
+
 @Component({
   selector: 'app-chat-content',
   templateUrl: './chat-content.component.html',
@@ -72,6 +73,7 @@ export class ChatContentComponent implements OnInit {
     });
 
   }
+
 
   getChatMessages() {
 

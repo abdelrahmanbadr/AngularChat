@@ -34,7 +34,7 @@ export class UserService {
   // }
 
   sendUserToSocket() {
-    this.socket.emit('saveUserData',this.currentUserData.userName,this.currentUserData.userId);
+    this.socket.emit('saveUserData',this.currentUserData.userName,this.currentUserData.userId,this.currentUserData.avatar);
   }
   getUsersExceptCurrent() {
     let observable = new Observable(observer => {
@@ -58,6 +58,16 @@ export class UserService {
   saveUser(data) {
     return new Promise((resolve, reject) => {
         this.http.post(this.apiUrl+'users', data)
+          .subscribe(res => {
+            resolve(res);
+          }, (err) => {
+            reject(err);
+          });
+    });
+  }
+  login(data) {
+    return new Promise((resolve, reject) => {
+        this.http.post(this.apiUrl+'users/login', data)
           .subscribe(res => {
             resolve(res);
           }, (err) => {

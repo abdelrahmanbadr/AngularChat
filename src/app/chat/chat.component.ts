@@ -53,6 +53,7 @@ export class ChatComponent implements OnInit {
   }
   getUserData(user){
     this.otherUserData = user;
+    console.log(user);
     this.unSeenMessage[user.userId]=0;
 
   }

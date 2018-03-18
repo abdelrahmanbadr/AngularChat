@@ -37,8 +37,8 @@
     <div class="col-9 chat-header">
       <div class="row">
       <div class="col-11" *ngIf="otherUserData">
-        <!-- <img width="40" height="40" class="img-circle" src="../assets/images/user.png"> -->
-        <img width="40" height="40" class="img-circle" src="https://dfu1k3y1rami2.cloudfront.net/wp-content/uploads/2014/07/27151402/2016_03_21_LB.jpg">
+        <img width="40" height="40" class="img-circle" src="{{otherUserData?.avatar}}">
+        <!-- <img width="40" height="40" class="img-circle" src="https://dfu1k3y1rami2.cloudfront.net/wp-content/uploads/2014/07/27151402/2016_03_21_LB.jpg"> -->
          Chat With {{otherUserData?.userName}}
       </div>
       <div class="col-1">
@@ -86,7 +86,8 @@
             <div *ngFor="let user of usersList" (click)="getUserData(user)">
               <div class="small_text " style="float: right;"> 12:30 pm</div> <br>
               <li class="clearfix row" >
-                <img class="img-circle col-3" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg" alt="avatar" />
+                <!-- <img class="img-circle col-3" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg" alt="avatar" /> -->
+                <img class="img-circle col-3" width="70" height="50" src="{{user.avatar}}" alt="avatar" />
               <div class="col-7">
                   {{user.userName}} <br>
                   <div class="small_text">last message</div>
